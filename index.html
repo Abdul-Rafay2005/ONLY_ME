@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Rafay | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <canvas id="matrix-canvas"></canvas>
+        <div class="loader-content">
+            <div class="loader-glitch" data-text="INITIALIZING...">INITIALIZING...</div>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+            <div class="loader-percent">0%</div>
+            <div class="loader-status"></div>
+        </div>
+    </div>
+
+    <!-- Three.js Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Hero Code Rain Canvas -->
+    <canvas id="hero-rain-canvas"></canvas>
+
+    <!-- CRT Scanline Overlay -->
+    <div id="crt-overlay"></div>
+
+    <!-- Particle Explosion Container -->
+    <div id="click-particles"></div>
+
+    <!-- Particle Overlay -->
+    <div id="particles-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-logo">
+            <span class="logo-bracket">&lt;</span>
+            <span class="logo-text">ABDUL RAFAY</span>
+            <span class="logo-bracket">/&gt;</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-link active" data-text="HOME">HOME</a></li>
+            <li><a href="#about" class="nav-link" data-text="ABOUT">ABOUT</a></li>
+            <li><a href="#skills" class="nav-link" data-text="SKILLS">SKILLS</a></li>
+            <li><a href="#experience" class="nav-link" data-text="EXPERIENCE">EXPERIENCE</a></li>
+            <li><a href="#projects" class="nav-link" data-text="PROJECTS">PROJECTS</a></li>
+            <li><a href="#achievements" class="nav-link" data-text="ACHIEVEMENTS">ACHIEVEMENTS</a></li>
+            <li><a href="#services" class="nav-link" data-text="SERVICES">SERVICES</a></li>
+            <li><a href="#contact" class="nav-link" data-text="CONTACT">CONTACT</a></li>
+        </ul>
+        <div class="nav-toggle" id="nav-toggle">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobile-nav">
+        <ul>
+            <li><a href="#hero" class="mobile-link">HOME</a></li>
+            <li><a href="#about" class="mobile-link">ABOUT</a></li>
+            <li><a href="#skills" class="mobile-link">SKILLS</a></li>
+            <li><a href="#experience" class="mobile-link">EXPERIENCE</a></li>
+            <li><a href="#projects" class="mobile-link">PROJECTS</a></li>
+            <li><a href="#contact" class="mobile-link">CONTACT</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                AVAILABLE FOR HIRE
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">
+                    <span class="title-greeting">&gt; Hello World, I'm</span>
+                </span>
+                <span class="title-line">
+                    <span class="title-name glitch" data-text="ABDUL RAFAY">ABDUL RAFAY</span>
+                </span>
+            </h1>
+            <div class="hero-typewriter">
+                <span class="typewriter-prefix">&gt; </span>
+                <span id="typewriter-text"></span>
+                <span class="typewriter-cursor">|</span>
+            </div>
+            <div class="audio-visualizer" id="audio-viz">
+                <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+                <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+                <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+                <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+                <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+                <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+                <div class="viz-bar"></div><div class="viz-bar"></div>
+            </div>
+            <div class="power-level">
+                <div class="power-label">
+                    <span><i class="fas fa-bolt"></i> POWER LEVEL</span>
+                    <span class="power-value">9000+</span>
+                </div>
+                <div class="power-track">
+                    <div class="power-fill" id="power-fill"></div>
+                    <div class="power-shine"></div>
+                </div>
+                <div class="power-segments">
+                    <span>AI</span><span>WEB</span><span>FULL-STACK</span><span>LEADERSHIP</span><span>AUTHOR</span>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="6">0</div>
+                    <div class="stat-label">PROJECTS</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="2">0</div>
+                    <div class="stat-label">HACKATHONS WON</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="3">0</div>
+                    <div class="stat-label">CERTIFICATIONS</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <span class="btn-glitch"></span>
+                    <i class="fas fa-gamepad"></i> VIEW PROJECTS
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> CONTACT ME
+                </a>
+                <a href="https://www.raffay.me/assets/Abdul_Rafay_CV-BL8rJPOA.pdf" class="btn btn-cv" target="_blank" download>
+                    <i class="fas fa-download"></i> DOWNLOAD CV
+                </a>
+            </div>
+            <div class="hero-scroll-indicator">
+                <div class="scroll-line"></div>
+                <span>SCROLL DOWN</span>
+            </div>
+        </div>
+        <!-- Hero Right: Creative 3D Profile Card -->
+        <div class="hero-right">
+            <div class="profile-card" id="profile-card">
+                <div class="profile-card-inner">
+                    <!-- Glowing ring -->
+                    <div class="pc-ring pc-ring-1"></div>
+                    <div class="pc-ring pc-ring-2"></div>
+                    <div class="pc-ring pc-ring-3"></div>
+                    <!-- Photo -->
+                    <div class="pc-photo">
+                        <img src="avatar.png" alt="Abdul Rafay">
+                    </div>
+                    <!-- Corner brackets -->
+                    <div class="pc-corner tl"></div>
+                    <div class="pc-corner tr"></div>
+                    <div class="pc-corner bl"></div>
+                    <div class="pc-corner br"></div>
+                    <!-- Floating badges -->
+                    <div class="pc-badge pc-badge-1"><i class="fas fa-robot"></i> AI Engineer</div>
+                    <div class="pc-badge pc-badge-2"><i class="fas fa-crown"></i> CEO</div>
+                    <div class="pc-badge pc-badge-3"><i class="fas fa-trophy"></i> 2x Winner</div>
+                    <div class="pc-badge pc-badge-4"><i class="fas fa-book"></i> Author</div>
+                    <!-- Scan line animation -->
+                    <div class="pc-scan"></div>
+                    <!-- Bottom info -->
+                    <div class="pc-info">
+                        <div class="pc-name">ABDUL RAFAY</div>
+                        <div class="pc-title">AI Developer &amp; Entrepreneur</div>
+                        <div class="pc-location"><i class="fas fa-map-marker-alt"></i> Karachi, Pakistan</div>
+                    </div>
+                </div>
+                <!-- Orbit dots -->
+                <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
+                <div class="orbit orbit-2"><div class="orbit-dot dot-2"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">// 01</span>
+                <h2 class="section-title">ABOUT <span class="text-gradient">ME</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-avatar-wrapper">
+                    <div class="avatar-frame">
+                        <div class="avatar-inner">
+                            <img src="avatar.png" alt="Abdul Rafay" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                        </div>
+                        <div class="avatar-ring"></div>
+                        <div class="avatar-ring ring-2"></div>
+                        <div class="corner tl"></div>
+                        <div class="corner tr"></div>
+                        <div class="corner bl"></div>
+                        <div class="corner br"></div>
+                    </div>
+                    <div class="avatar-badge">
+                        <i class="fas fa-code"></i> CS STUDENT
+                    </div>
+                </div>
+                <div class="about-content">
+                    <div class="about-terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="terminal-title">about_me.sh</span>
+                        </div>
+                        <div class="terminal-body">
+                            <p><span class="term-prompt">$</span> <span class="term-cmd">cat about.txt</span></p>
+                            <p class="term-output">AI-focused developer and entrepreneur driven by solving real-world problems through technology.</p>
+                            <p class="term-output">Founder & CEO of <span class="text-cyan">Ravexa AI</span> — an AI-powered platform helping students become interview-ready.</p>
+                            <p class="term-output">Frontend AI Engineer at <span class="text-cyan">FlyRank AI</span>.</p>
+                            <p class="term-output">Published author of <span class="text-magenta">"A Man Who Could Never Say No"</span>.</p>
+                            <p class="term-output">Two-time hackathon winner. Co-Director of <span class="text-cyan">IEEE NEDUET</span> (200+ members).</p>
+                            <p><span class="term-prompt">$</span> <span class="typewriter-blink">_</span></p>
+                        </div>
+                    </div>
+                    <div class="about-info-cards">
+                        <div class="info-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span class="info-label">LOCATION</span>
+                                <span class="info-value">Karachi, Pakistan</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <span class="info-label">DEGREE</span>
+                                <span class="info-value">BS Computer Science</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-building"></i>
+                            <div>
+                                <span class="info-label">COMPANY</span>
+                                <span class="info-value">Ravexa AI & FlyRank</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-trophy"></i>
+                            <div>
+                                <span class="info-label">HACKATHONS</span>
+                                <span class="info-value">2x Winner + Runner-up</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">// 02</span>
+                <h2 class="section-title">EDUCATION <span class="text-gradient">QUEST</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="education-cards">
+                <div class="edu-card">
+                    <div class="edu-icon"><i class="fas fa-university"></i></div>
+                    <div class="edu-content">
+                        <div class="edu-date"><i class="far fa-calendar-alt"></i> 2024 - 2028</div>
+                        <h3>Bachelor of Science</h3>
+                        <h4>Computer Science & Information Technology</h4>
+                        <p>NED University of Engineering & Technology, Karachi</p>
+                        <div class="edu-progress">
+                            <div class="edu-progress-bar" data-progress="50"></div>
+                        </div>
+                        <span class="edu-progress-label">IN PROGRESS</span>
+                    </div>
+                    <div class="edu-xp">+200 XP</div>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-icon"><i class="fas fa-brain"></i></div>
+                    <div class="edu-content">
+                        <div class="edu-date"><i class="far fa-calendar-alt"></i> 2025 - 2026</div>
+                        <h3>AI & Data Science</h3>
+                        <h4>Major: Machine Learning</h4>
+                        <p>SMIT Karachi / Saylani Mass IT Training</p>
+                        <div class="edu-progress">
+                            <div class="edu-progress-bar" data-progress="60"></div>
+                        </div>
+                        <span class="edu-progress-label">IN PROGRESS</span>
+                    </div>
+                    <div class="edu-xp">+150 XP</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">// 03</span>
+                <h2 class="section-title">TECH <span class="text-gradient">ARSENAL</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-cat-header">
+                        <i class="fas fa-code"></i>
+                        <h3>LANGUAGES</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item"><div class="skill-icon"><i class="fab fa-python"></i></div><div class="skill-info"><span>Python</span><div class="skill-bar"><div class="skill-fill" data-skill="90"></div></div></div><span class="skill-lvl">LVL 90</span></div>
+                        <div class="skill-item"><div class="skill-icon"><i class="fab fa-js-square"></i></div><div class="skill-info"><span>JavaScript</span><div class="skill-bar"><div class="skill-fill" data-skill="88"></div></div></div><span class="skill-lvl">LVL 88</span></div>
+                        <div class="skill-item"><div class="skill-icon"><i class="fas fa-code"></i></div><div class="skill-info"><span>C++</span><div class="skill-bar"><div class="skill-fill" data-skill="75"></div></div></div><span class="skill-lvl">LVL 75</span></div>
+                        <div class="skill-item"><div class="skill-icon"><i class="fab fa-html5"></i></div><div class="skill-info"><span>HTML5</span><div class="skill-bar"><div class="skill-fill" data-skill="95"></div></div></div><span class="skill-lvl">LVL 95</span></div>
+                        <div class="skill-item"><div class="skill-icon"><i class="fab fa-css3-alt"></i></div><div class="skill-info"><span>CSS3</span><div class="skill-bar"><div class="skill-fill" data-skill="90"></div></div></div><span class="skill-lvl">LVL 90</span></div>
+                        <div class="skill-item"><div class="skill-icon"><i class="fas fa-database"></i></div><div class="skill-info"><span>SQL</span><div class="skill-bar"><div class="skill-fill" data-skill="78"></div></div></div><span class="skill-lvl">LVL 78</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-cat-header">
+                        <i class="fas fa-layer-group"></i>
+                        <h3>FRAMEWORKS & TOOLS</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item"><div class="skill-icon"><i class="fab fa-react"></i></div><div class="skill-info"><span>React.js</span><div class="skill-bar"><div class="skill-fill" data-skill="88"></div></div></div><span class="skill-lvl">LVL 88</span></div>
+                        <div class="skill-item"><div class="skill-icon"><i class="fab fa-node-js"></i></div><div class="skill-info"><span>Node.js</span><div class="skill-bar"><div class="skill-fill" data-skill="80"></div></div></div><span class="skill-lvl">LVL 80</span></div>
+                        <div class="skill-item"><div class="skill-icon"><i class="fas fa-cube"></i></div><div class="skill-info"><span>Three.js</span><div class="skill-bar"><div class="skill-fill" data-skill="70"></div></div></div><span class="skill-lvl">LVL 70</span></div>
+                        <div class="skill-item"><div class="skill-icon"><i class="fab fa-git-alt"></i></div><div class="skill-info"><span>GitHub</span><div class="skill-bar"><div class="skill-fill" data-skill="85"></div></div></div><span class="skill-lvl">LVL 85</span></div>
+                        <div class="skill-item"><div class="skill-icon"><i class="fas fa-window-maximize"></i></div><div class="skill-info"><span>Qt Framework</span><div class="skill-bar"><div class="skill-fill" data-skill="72"></div></div></div><span class="skill-lvl">LVL 72</span></div>
+                        <div class="skill-item"><div class="skill-icon"><i class="fas fa-server"></i></div><div class="skill-info"><span>PostgreSQL</span><div class="skill-bar"><div class="skill-fill" data-skill="76"></div></div></div><span class="skill-lvl">LVL 76</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-domains">
+                <div class="domain-badge"><i class="fas fa-globe"></i> Web Development</div>
+                <div class="domain-badge"><i class="fas fa-robot"></i> AI & Machine Learning</div>
+                <div class="domain-badge"><i class="fas fa-palette"></i> Frontend</div>
+                <div class="domain-badge"><i class="fas fa-plug"></i> Backend Integration</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">// 04</span>
+                <h2 class="section-title">CAREER <span class="text-gradient">QUEST LOG</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-item" data-aos="slide-right">
+                    <div class="timeline-dot"><i class="fas fa-rocket"></i></div>
+                    <div class="timeline-card">
+                        <div class="timeline-badge current">ACTIVE QUEST</div>
+                        <div class="timeline-date">JULY 2026 - PRESENT</div>
+                        <h3>Frontend AI Engineer</h3>
+                        <h4>FlyRank AI</h4>
+                        <ul>
+                            <li>Building AI-integrated frontend features using React.js and modern JavaScript</li>
+                            <li>Collaborating with cross-functional teams to ship AI-powered interfaces</li>
+                            <li>Delivering data-driven components in production environments</li>
+                        </ul>
+                        <div class="timeline-xp">+300 XP</div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="slide-left">
+                    <div class="timeline-dot"><i class="fas fa-crown"></i></div>
+                    <div class="timeline-card">
+                        <div class="timeline-badge current">BOSS LEVEL</div>
+                        <div class="timeline-date">2026 - PRESENT</div>
+                        <h3>Founder & CEO</h3>
+                        <h4>Ravexa AI</h4>
+                        <ul>
+                            <li>Built an AI platform helping students and early-career developers become interview-ready</li>
+                            <li>Combines AI and real career insights for clear paths and measurable progress</li>
+                            <li>Leading product development and strategic vision</li>
+                        </ul>
+                        <div class="timeline-xp">+500 XP</div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="slide-right">
+                    <div class="timeline-dot"><i class="fas fa-star"></i></div>
+                    <div class="timeline-card">
+                        <div class="timeline-badge completed">COMPLETED</div>
+                        <div class="timeline-date">INTERNSHIP - 2 MONTHS</div>
+                        <h3>Junior Web Developer Intern</h3>
+                        <h4>Aga Khan University</h4>
+                        <ul>
+                            <li>Engineered 3 fully functional web development projects</li>
+                            <li>Implemented responsive UI components with React.js and RESTful API integration</li>
+                            <li>Strengthened expertise in component-based architecture and responsive design</li>
+                        </ul>
+                        <div class="timeline-xp">+200 XP</div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="slide-left">
+                    <div class="timeline-dot"><i class="fas fa-users"></i></div>
+                    <div class="timeline-card">
+                        <div class="timeline-badge current">SIDE QUEST</div>
+                        <div class="timeline-date">2024 - PRESENT</div>
+                        <h3>Co-Director</h3>
+                        <h4>IEEE NEDUET Student Society</h4>
+                        <ul>
+                            <li>Directed strategic planning for events reaching 200+ student participants</li>
+                            <li>Led cross-functional teams for logistics and speaker engagements</li>
+                            <li>Built partnerships with industry professionals through inter-university events</li>
+                        </ul>
+                        <div class="timeline-xp">+250 XP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">// 05</span>
+                <h2 class="section-title">PROJECT <span class="text-gradient">SHOWCASE</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card featured">
+                    <div class="project-image">
+                        <img src="assets/project-talksy.png" alt="TalksyAI" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://nexa-psi.vercel.app/" target="_blank" class="project-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/Abdul-Rafay2005/AI-Model" target="_blank" class="project-btn"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags"><span>JavaScript</span><span>Firebase</span><span>Gemini API</span></div>
+                        <h3>Talksy AI</h3>
+                        <p>AI chatbot powered by Google's Gemini API with Firebase integration for authentication and persistent conversation history.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-bolt"></i> Gemini Powered</span>
+                            <span><i class="fas fa-mobile-alt"></i> Responsive</span>
+                        </div>
+                    </div>
+                    <div class="project-rarity">LEGENDARY</div>
+                </div>
+                <div class="project-card featured">
+                    <div class="project-image">
+                        <img src="assets/project-calmos.png" alt="Digital Calm OS" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://digital-calm-os.vercel.app/" target="_blank" class="project-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/Abdul-Rafay2005/Digital-Calm-OS" target="_blank" class="project-btn"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags"><span>TypeScript</span><span>Firebase</span><span>AI</span></div>
+                        <h3>Digital Calm OS</h3>
+                        <p>AI-powered productivity platform designed to reduce information overload across email, chat, calendar, and task management.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-brain"></i> AI Powered</span>
+                            <span><i class="fas fa-tasks"></i> Productivity</span>
+                        </div>
+                    </div>
+                    <div class="project-rarity">EPIC</div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project-arcova.png" alt="Arcova" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://arcova-three.vercel.app/" target="_blank" class="project-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/Abdul-Rafay2005" target="_blank" class="project-btn"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                        <h3>Arcova</h3>
+                        <p>A fictional SaaS platform built using semantic HTML5, modern CSS, and JavaScript. Focused on clean UI, responsiveness, and performance.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-tachometer-alt"></i> Fast Load</span>
+                            <span><i class="fas fa-search"></i> SEO Ready</span>
+                        </div>
+                    </div>
+                    <div class="project-rarity">RARE</div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project-ecommerce.jpg" alt="E-Commerce" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://github.com/Abdul-Rafay2005" target="_blank" class="project-btn"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags"><span>React</span><span>PostgreSQL</span><span>JS</span></div>
+                        <h3>E-Commerce Website</h3>
+                        <p>Modern online store with product filtering, shopping cart, and secure payment integration for a seamless shopping experience.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-shopping-bag"></i> Full Store</span>
+                            <span><i class="fas fa-mobile-alt"></i> Responsive</span>
+                        </div>
+                    </div>
+                    <div class="project-rarity">RARE</div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project-portfolio.png" alt="Portfolio" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://my-portfolio-seven-xi-95.vercel.app/" target="_blank" class="project-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/Abdul-Rafay2005/MY_Portfolio" target="_blank" class="project-btn"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>Bootstrap</span></div>
+                        <h3>Portfolio Website</h3>
+                        <p>Personal portfolio website showcasing projects, achievements, and technical skills with a modern responsive design.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-palette"></i> Modern UI</span>
+                            <span><i class="fas fa-star"></i> Showcase</span>
+                        </div>
+                    </div>
+                    <div class="project-rarity">UNCOMMON</div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project-bookstore.png" alt="Book Store" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://github.com/Abdul-Rafay2005/bookStore" target="_blank" class="project-btn"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags"><span>Python</span><span>SQL</span><span>PostgreSQL</span></div>
+                        <h3>Book Store Management</h3>
+                        <p>Full-featured bookstore management system with inventory tracking, customer management, search, and sales records.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-database"></i> PostgreSQL</span>
+                            <span><i class="fas fa-chart-bar"></i> Reports</span>
+                        </div>
+                    </div>
+                    <div class="project-rarity">UNCOMMON</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Achievements -->
+    <section id="achievements" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">// 06</span>
+                <h2 class="section-title">BADGES & <span class="text-gradient">ACHIEVEMENTS</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <!-- Achievements -->
+            <h3 class="sub-section-title"><i class="fas fa-trophy"></i> Achievements</h3>
+            <div class="achievements-grid" style="margin-bottom:48px">
+                <div class="achievement-card award">
+                    <div class="ach-img"><img src="assets/ach-stem.jpeg" alt="STEM Talent"></div>
+                    <div class="ach-content">
+                        <span class="ach-type">ACHIEVEMENT</span>
+                        <h4>Quify STEM Talent</h4>
+                        <p>Qualified for Round 2 among 1,500+ teams across Pakistan</p>
+                    </div>
+                    <div class="ach-rarity gold">GOLD</div>
+                </div>
+                <div class="achievement-card award">
+                    <div class="ach-img"><img src="assets/ach-webwizard.png" alt="Hackathon"></div>
+                    <div class="ach-content">
+                        <span class="ach-type">ACHIEVEMENT</span>
+                        <h4>WebWizard Hackathon</h4>
+                        <p>Secured 2nd place in a highly competitive hackathon</p>
+                    </div>
+                    <div class="ach-rarity silver">SILVER</div>
+                </div>
+                <div class="achievement-card award">
+                    <div class="ach-img"><img src="assets/ach-nylp.png" alt="NYLP"></div>
+                    <div class="ach-content">
+                        <span class="ach-type">ACHIEVEMENT</span>
+                        <h4>NYLP Ambassador</h4>
+                        <p>Represented and led initiatives under the National Youth Leadership Program</p>
+                    </div>
+                    <div class="ach-rarity gold">GOLD</div>
+                </div>
+                <div class="achievement-card award">
+                    <div class="ach-img"><img src="assets/ach-ieee.jpeg" alt="IEEE"></div>
+                    <div class="ach-content">
+                        <span class="ach-type">ACHIEVEMENT</span>
+                        <h4>IEEE NED Co-Director</h4>
+                        <p>Led a team of 100+ students in engineering events and workshops</p>
+                    </div>
+                    <div class="ach-rarity gold">GOLD</div>
+                </div>
+                <div class="achievement-card award">
+                    <div class="ach-img"><img src="assets/ach-nasa.png" alt="NASA"></div>
+                    <div class="ach-content">
+                        <span class="ach-type">ACHIEVEMENT</span>
+                        <h4>NASA Space Apps Challenge</h4>
+                        <p>Developed innovative solutions addressing real-world global challenges</p>
+                    </div>
+                    <div class="ach-rarity silver">SILVER</div>
+                </div>
+                <div class="achievement-card award">
+                    <div class="ach-img"><img src="assets/ach-fast.png" alt="FAST"></div>
+                    <div class="ach-content">
+                        <span class="ach-type">ACHIEVEMENT</span>
+                        <h4>FAST Crime Competition</h4>
+                        <p>National-level problem-solving and innovation challenge</p>
+                    </div>
+                    <div class="ach-rarity silver">SILVER</div>
+                </div>
+            </div>
+            <!-- Certifications -->
+            <h3 class="sub-section-title"><i class="fas fa-certificate"></i> Certifications</h3>
+            <div class="achievements-grid">
+                <div class="achievement-card cert">
+                    <div class="ach-img"><img src="assets/cert-arduino.png" alt="Arduino"></div>
+                    <div class="ach-content">
+                        <span class="ach-type">CERTIFICATION</span>
+                        <h4>Arduino for Engineers</h4>
+                        <p>Microcontrollers, sensors & embedded systems</p>
+                    </div>
+                    <div class="ach-rarity silver">SILVER</div>
+                </div>
+                <div class="achievement-card cert">
+                    <div class="ach-img"><img src="assets/cert-hacking.png" alt="Ethical Hacking"></div>
+                    <div class="ach-content">
+                        <span class="ach-type">CERTIFICATION</span>
+                        <h4>Ethical Hacking</h4>
+                        <p>Cybersecurity, penetration testing & network security</p>
+                    </div>
+                    <div class="ach-rarity silver">SILVER</div>
+                </div>
+                <div class="achievement-card cert">
+                    <div class="ach-img"><img src="assets/cert-ai.png" alt="AI Fundamentals"></div>
+                    <div class="ach-content">
+                        <span class="ach-type">CERTIFICATION</span>
+                        <h4>AI Fundamentals</h4>
+                        <p>Core AI, ML basics & real-world applications</p>
+                    </div>
+                    <div class="ach-rarity gold">GOLD</div>
+                </div>
+                <div class="achievement-card cert">
+                    <div class="ach-img"><img src="assets/cert-n8n.png" alt="N8N"></div>
+                    <div class="ach-content">
+                        <span class="ach-type">CERTIFICATION</span>
+                        <h4>N8N Chatbot</h4>
+                        <p>Automation workflows, chatbots & API integration</p>
+                    </div>
+                    <div class="ach-rarity silver">SILVER</div>
+                </div>
+                <div class="achievement-card cert">
+                    <div class="ach-img"><img src="assets/cert-sql.png" alt="SQL"></div>
+                    <div class="ach-content">
+                        <span class="ach-type">CERTIFICATION</span>
+                        <h4>SQL Training</h4>
+                        <p>Database fundamentals, queries & relational databases</p>
+                    </div>
+                    <div class="ach-rarity silver">SILVER</div>
+                </div>
+                <div class="achievement-card cert">
+                    <div class="ach-img"><img src="assets/cert-engineers.png" alt="EngineersCode"></div>
+                    <div class="ach-content">
+                        <span class="ach-type">CERTIFICATION</span>
+                        <h4>EngineersCode Volunteer</h4>
+                        <p>Technical collaboration & engineering community</p>
+                    </div>
+                    <div class="ach-rarity silver">SILVER</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">// 07</span>
+                <h2 class="section-title">MY <span class="text-gradient">SERVICES</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-robot"></i></div>
+                    <div class="service-glow"></div>
+                    <h3>AI Solutions & Automation</h3>
+                    <p>I integrate AI-powered features into applications and business workflows — chatbots, intelligent assistants, automation systems, recommendation engines, and AI-driven tools using modern APIs and machine learning.</p>
+                    <div class="service-tags"><span>Gemini API</span><span>n8n</span><span>Python</span></div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-layer-group"></i></div>
+                    <div class="service-glow"></div>
+                    <h3>Full-Stack Development</h3>
+                    <p>Building complete web applications from frontend to backend — scalable solutions using modern technologies, APIs, databases, authentication systems, and cloud services for reliable end-to-end products.</p>
+                    <div class="service-tags"><span>React.js</span><span>Node.js</span><span>Firebase</span></div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-code"></i></div>
+                    <div class="service-glow"></div>
+                    <h3>Software Development</h3>
+                    <p>Designing and developing custom software solutions focused on performance, maintainability, and security. From business tools to specialized applications tailored to your requirements.</p>
+                    <div class="service-tags"><span>Python</span><span>C++</span><span>Qt</span></div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                    <div class="service-glow"></div>
+                    <h3>Web Development</h3>
+                    <p>Creating responsive, modern, and user-friendly websites delivering excellent user experiences — from landing pages and portfolios to business websites and platforms optimized for all devices.</p>
+                    <div class="service-tags"><span>HTML/CSS</span><span>JavaScript</span><span>React</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">// 08</span>
+                <h2 class="section-title">GET IN <span class="text-gradient">TOUCH</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's Build Something <span class="text-gradient">Epic</span></h3>
+                    <p>Ready to collaborate on your next project or have an opportunity? Let's connect and create something amazing together.</p>
+                    <div class="contact-links">
+                        <a href="mailto:mrabdulrafay7788@gmail.com" class="contact-link">
+                            <div class="contact-link-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <span class="contact-link-label">EMAIL</span>
+                                <span class="contact-link-value">mrabdulrafay7788@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/Abdul-Rafay2005" class="contact-link" target="_blank">
+                            <div class="contact-link-icon"><i class="fab fa-github"></i></div>
+                            <div>
+                                <span class="contact-link-label">GITHUB</span>
+                                <span class="contact-link-value">github.com/Abdul-Rafay2005</span>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/abdul-rafay-18bab5356/" class="contact-link" target="_blank">
+                            <div class="contact-link-icon"><i class="fab fa-linkedin-in"></i></div>
+                            <div>
+                                <span class="contact-link-label">LINKEDIN</span>
+                                <span class="contact-link-value">linkedin.com/in/abdul-rafay</span>
+                            </div>
+                        </a>
+                        <a href="https://www.instagram.com/i_am_rafyy7" class="contact-link" target="_blank">
+                            <div class="contact-link-icon"><i class="fab fa-instagram"></i></div>
+                            <div>
+                                <span class="contact-link-label">INSTAGRAM</span>
+                                <span class="contact-link-value">@i_am_rafyy7</span>
+                            </div>
+                        </a>
+                        <a href="tel:+923152462949" class="contact-link">
+                            <div class="contact-link-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <span class="contact-link-label">PHONE</span>
+                                <span class="contact-link-value">+92 315 2462949</span>
+                            </div>
+                        </a>
+                        <div class="contact-link">
+                            <div class="contact-link-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <span class="contact-link-label">LOCATION</span>
+                                <span class="contact-link-value">Karachi, Pakistan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label>YOUR NAME</label>
+                            <input type="text" placeholder="Enter your name" required>
+                            <span class="form-line"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>YOUR EMAIL</label>
+                            <input type="email" placeholder="Enter your email" required>
+                            <span class="form-line"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>MESSAGE</label>
+                            <textarea rows="5" placeholder="Type your message..." required></textarea>
+                            <span class="form-line"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <i class="fas fa-paper-plane"></i> SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>
+                    <span class="logo-text">ABDUL RAFAY</span>
+                    <span class="logo-bracket">/&gt;</span>
+                </div>
+                <div class="footer-socials">
+                    <a href="mailto:mrabdulrafay7788@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/Abdul-Rafay2005" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/abdul-rafay-18bab5356/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/i_am_rafyy7" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; 2026 Abdul Rafay. All Rights Reserved.</p>
+                    <p class="footer-tagline">Built with passion & caffeine <i class="fas fa-coffee"></i></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
